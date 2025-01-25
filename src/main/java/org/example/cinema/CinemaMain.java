@@ -1,5 +1,9 @@
 package org.example.cinema;
 
+import java.util.Arrays;
+import java.util.Random;
+import java.util.stream.Collectors;
+
 public class CinemaMain {
     public static void main(String[] args) {
         FilmType[] types = new FilmType[]{
@@ -26,5 +30,68 @@ public class CinemaMain {
         System.out.println("maxTaxCoefficient: " + maxTaxCoefficient);
         System.out.println("avgTaxCoefficient: " + avgTaxCoefficient);
         System.out.println("types[types.length - 1].getTaxCoefficient(): " + types[types.length - 1].getTaxCoefficient());
+        System.out.println("=======================================");
+
+        Film[] films = new Film[]{
+                new Film(types[0], "Бэтмен", 1111, 2022, 2015, "Боевик", Color.COLOR),
+                new Film(types[0], "Супермен возвращается", 87812, 2500, 2014, "Боевик", Color.COLOR),
+                new Film(types[0], "Пираты силиконовой долины", 4356, 12080, 2019, "Драма", Color.COLOR),
+                new Film(types[1], "Гадкий я", 2866, 1200, 2006, "Мультфильм", Color.BLACK_WHITE),
+                new Film(types[1], "Арманеддон", 8876, 2200, 2019, "Боевик", Color.COLOR),
+                new Film(types[2], "Полицейская академия", 4544, 3000, 2016, "Комедия", Color.BLACK_WHITE),
+                new Film(types[2], "Ограбление казино", 9087, 1200, 2020, "Боевик", Color.COLOR)
+        };
+        Helper.printFilms(films);
+        System.out.println();
+        Helper.printFilms(Helper.sortFilms(films));
+    }
+
+    static class Helper {
+        public static void printFilms(Film[] films) {
+            for (Film film: films) {
+                System.out.println(film);
+            }
+        }
+
+        private static Film[] sortFilms(Film[] films) {
+            return recursiveQuickSort(films, 0, films.length);
+        }
+
+        private static Film[] recursiveQuickSort(Film[] films, int left, int right) {
+            if (right <= left) {
+                return films;
+            }
+            int a = new Random().nextInt(right - left) + left;
+            swap(films, left, a);
+
+            int i = left + 1;
+            Film pivot = films[left];
+            for (int j = i; j < right; j++) {
+                if (pivot.compareTo(films[j]) > 0) {
+                    swap(films, i, j);
+                    i++;
+                }
+            }
+            swap(films, left, i - 1);
+
+            int middleSectionEnd = i;
+            for (int j = i; j < right; j++) {
+                if (pivot.compareTo(films[j]) == 0) {
+                    swap(films, middleSectionEnd, j);
+                    middleSectionEnd++;
+                }
+            }
+
+            recursiveQuickSort(films, left, i - 1);
+            recursiveQuickSort(films, middleSectionEnd, right);
+
+            return films;
+        }
+
+        private static void swap(Film[] films, int first, int second) {
+            Film tmp = films[first];
+            films[first] = films[second];
+            films[second] = tmp;
+        }
     }
 }
