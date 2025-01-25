@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Film implements Comparable<Film>{
     private FilmType filmType;
     private String name;
-    private int registrationNumber;
+    private String registrationNumber;
     private int weight;
     private int manufactureYear;
     private String genre;
@@ -14,14 +14,33 @@ public class Film implements Comparable<Film>{
     public Film() {
         this.filmType = new FilmType();
         this.name = "unknown";
-        this.registrationNumber = -1;
+        this.registrationNumber = "-1";
         this.weight = -1;
         this.manufactureYear = -1;
         this.genre = "unknown";
         this.color = Color.BLACK_WHITE;
     }
 
-    public Film(FilmType filmType, String name, int registrationNumber, int weight, int manufactureYear, String genre, Color color) {
+    public Film(FilmType filmType, String name, String registrationNumber, int weight, int manufactureYear, String genre, Color color) {
+        if (!TechnicalSpecialist.validateFilmType(filmType)) {
+            throw new IllegalArgumentException("Wrong film type: " + filmType);
+        }
+        if (!TechnicalSpecialist.validateName(name)){
+            throw new IllegalArgumentException("Wrong name: " + name);
+        }
+        if (!TechnicalSpecialist.validateRegistrationNumber(registrationNumber)){
+            throw new IllegalArgumentException("Wrong registration number: " + registrationNumber);
+        }
+        if (!TechnicalSpecialist.validateWeight(weight)){
+            throw new IllegalArgumentException("Wrong weight: " + weight);
+        }
+        if (!TechnicalSpecialist.validateManufactureYear(manufactureYear)){
+            throw new IllegalArgumentException("Wrong manufacture year: " + manufactureYear);
+        }
+        if (!TechnicalSpecialist.validateColor(color)){
+            throw new IllegalArgumentException("Wrong color: " + color);
+        }
+
         this.filmType = filmType;
         this.name = name;
         this.registrationNumber = registrationNumber;
@@ -36,6 +55,9 @@ public class Film implements Comparable<Film>{
     }
 
     public void setFilmType(FilmType filmType) {
+        if (!TechnicalSpecialist.validateFilmType(filmType)) {
+            throw new IllegalArgumentException("Wrong film type: " + filmType);
+        }
         this.filmType = filmType;
     }
 
@@ -44,14 +66,20 @@ public class Film implements Comparable<Film>{
     }
 
     public void setName(String name) {
+        if (!TechnicalSpecialist.validateName(name)){
+            throw new IllegalArgumentException("Wrong name: " + name);
+        }
         this.name = name;
     }
 
-    public int getRegistrationNumber() {
+    public String getRegistrationNumber() {
         return registrationNumber;
     }
 
-    public void setRegistrationNumber(int registrationNumber) {
+    public void setRegistrationNumber(String registrationNumber) {
+        if (!TechnicalSpecialist.validateRegistrationNumber(registrationNumber)){
+            throw new IllegalArgumentException("Wrong registration number: " + registrationNumber);
+        }
         this.registrationNumber = registrationNumber;
     }
 
@@ -60,6 +88,9 @@ public class Film implements Comparable<Film>{
     }
 
     public void setWeight(int weight) {
+        if (!TechnicalSpecialist.validateWeight(weight)){
+            throw new IllegalArgumentException("Wrong weight: " + weight);
+        }
         this.weight = weight;
     }
 
@@ -68,6 +99,9 @@ public class Film implements Comparable<Film>{
     }
 
     public void setManufactureYear(int manufactureYear) {
+        if (!TechnicalSpecialist.validateManufactureYear(manufactureYear)){
+            throw new IllegalArgumentException("Wrong manufacture year: " + manufactureYear);
+        }
         this.manufactureYear = manufactureYear;
     }
 
@@ -84,6 +118,9 @@ public class Film implements Comparable<Film>{
     }
 
     public void setColor(Color color) {
+        if (!TechnicalSpecialist.validateColor(color)){
+            throw new IllegalArgumentException("Wrong color: " + color);
+        }
         this.color = color;
     }
 

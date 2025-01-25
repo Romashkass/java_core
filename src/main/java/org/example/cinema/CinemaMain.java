@@ -33,13 +33,13 @@ public class CinemaMain {
         System.out.println("=======================================");
 
         Film[] films = new Film[]{
-                new Film(types[0], "Бэтмен", 1111, 2022, 2015, "Боевик", Color.COLOR),
-                new Film(types[0], "Супермен возвращается", 87812, 2500, 2014, "Боевик", Color.COLOR),
-                new Film(types[0], "Пираты силиконовой долины", 4356, 12080, 2019, "Драма", Color.COLOR),
-                new Film(types[1], "Гадкий я", 2866, 1200, 2006, "Мультфильм", Color.BLACK_WHITE),
-                new Film(types[1], "Арманеддон", 8876, 2200, 2019, "Боевик", Color.COLOR),
-                new Film(types[2], "Полицейская академия", 4544, 3000, 2016, "Комедия", Color.BLACK_WHITE),
-                new Film(types[2], "Ограбление казино", 9087, 1200, 2020, "Боевик", Color.COLOR)
+                new Film(types[0], "Бэтмен", "1111", 2022, 2015, "Боевик", Color.COLOR),
+                new Film(types[0], "Супермен возвращается", "87812", 2500, 2014, "Боевик", Color.COLOR),
+                new Film(types[0], "Пираты силиконовой долины", "4356", 12080, 2019, "Драма", Color.COLOR),
+                new Film(types[1], "Гадкий я", "2866", 1200, 2006, "Мультфильм", Color.BLACK_WHITE),
+                new Film(types[1], "Арманеддон", "8876", 2200, 2019, "Боевик", Color.COLOR),
+                new Film(types[2], "Полицейская академия", "4544", 3000, 2016, "Комедия", Color.BLACK_WHITE),
+                new Film(types[2], "Ограбление казино", "9087", 1200, 2020, "Боевик", Color.COLOR)
         };
         Helper.printFilms(films);
         System.out.println();
