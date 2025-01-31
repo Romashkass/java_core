@@ -5,27 +5,43 @@ public class TechnicalSpecialist {
 
     private TechnicalSpecialist() {}
 
-    static public boolean validateManufactureYear(int year) {
+    public static boolean validateManufactureYear(int year) {
         return year >= LOWER_LIMIT_MANUFACTURE_YEAR && year < 10000;
     }
 
-    static public boolean validateWeight(int weight) {
+    public static boolean validateWeight(double weight) {
         return weight >= 0;
     }
 
-    static public boolean validateColor (Color color) {
+    public static boolean validateColor (Color color) {
         return null != color;
     }
 
-    static public boolean validateFilmType(FilmType type) {
+    public static boolean validateFilmType(FilmType type) {
         return null != type.getTypeName() && type.getTaxCoefficient() >= 0;
     }
 
-    static public boolean validateRegistrationNumber(String number) {
+    public static boolean validateRegistrationNumber(String number) {
         return null != number && number.matches("\\d{4}");
     }
 
-    static public boolean validateName(String name) {
+    public static boolean validateName(String name) {
         return null != name && !name.isEmpty();
+    }
+
+    public static boolean validateAbstractFilmType(AbstractFilmType type) {
+        return null != type.getFilmTypeName() && !type.getFilmTypeName().isEmpty() && type.getTaxCoefficient() > 0;
+    }
+
+    public static boolean validateFilm8Mm(Film8Mm film) {
+        return validateAbstractFilmType(film) && film.getCapacity() > 0 && film.getSpeed() > 0;
+    }
+
+    public static boolean validateFilm8Mm(Film16Mm film) {
+        return validateAbstractFilmType(film) && film.getCapacity() > 0 && film.getSpeed() > 0;
+    }
+
+    public static boolean validateFilm8Mm(Film32Mm film) {
+        return validateAbstractFilmType(film) && film.getCapacity() > 0 && film.getSpeed() > 0;
     }
 }

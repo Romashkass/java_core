@@ -1,8 +1,6 @@
 package org.example.cinema;
 
-import java.util.Arrays;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class CinemaMain {
     public static void main(String[] args) {
@@ -44,6 +42,18 @@ public class CinemaMain {
         Helper.printFilms(films);
         System.out.println();
         Helper.printFilms(Helper.sortFilms(films));
+
+//        Film[] films2 = new Film[]{
+//                new Film(types[0], "Бэтмен", "1232", 0.5, 2015, "Боевик", Color.COLOR),
+//                new Film(types[0], "Бэтмен 2", "3456", 0.5, 2014, "Боевик", Color.COLOR),
+//                new Film(types[0], "Супермен", "9635", 1, 2019, "Боевик", Color.COLOR),
+//                new Film(types[1], "Астрал", "1132", 1, 2006, "Ужасы", Color.BLACK_WHITE),
+//                new Film(types[1], "Миссия невыполнима", "0098", 1, 2019, "Боевик", Color.COLOR),
+//                new Film(types[2], "Аватар", "6843", 3, 2016, "Боевик", Color.COLOR),
+//                new Film(types[2], "Аватар 2", "3863", 3, 2020, "Боевик", Color.COLOR),
+//        };
+
+
     }
 
     static class Helper {

@@ -4,9 +4,10 @@ import java.util.Objects;
 
 public class Film implements Comparable<Film>{
     private FilmType filmType;
+    AbstractFilmType type;
     private String name;
     private String registrationNumber;
-    private int weight;
+    private double weight;
     private int manufactureYear;
     private String genre;
     private Color color;
@@ -21,7 +22,7 @@ public class Film implements Comparable<Film>{
         this.color = Color.BLACK_WHITE;
     }
 
-    public Film(FilmType filmType, String name, String registrationNumber, int weight, int manufactureYear, String genre, Color color) {
+    public Film(FilmType filmType, String name, String registrationNumber, double weight, int manufactureYear, String genre, Color color) {
         if (!TechnicalSpecialist.validateFilmType(filmType)) {
             throw new IllegalArgumentException("Wrong film type: " + filmType);
         }
@@ -83,11 +84,11 @@ public class Film implements Comparable<Film>{
         this.registrationNumber = registrationNumber;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         if (!TechnicalSpecialist.validateWeight(weight)){
             throw new IllegalArgumentException("Wrong weight: " + weight);
         }
