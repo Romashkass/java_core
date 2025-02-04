@@ -1,6 +1,7 @@
 package org.example.cinema;
 
 public class FilmType {
+    private int id;
     private String typeName;
     private double taxCoefficient;
 
@@ -9,9 +10,18 @@ public class FilmType {
         this.taxCoefficient = 0;
     }
 
-    public FilmType(String name, double taxCoefficient) {
+    public FilmType(int id, String name, double taxCoefficient) {
+        this.id = id;
         this.typeName = name;
         this.taxCoefficient = taxCoefficient;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTypeName() {
@@ -37,5 +47,14 @@ public class FilmType {
 
     public String getString() {
         return typeName + ", \"" + taxCoefficient + "\"";
+    }
+
+    @Override
+    public String toString() {
+        return "FilmType{" +
+                "id=" + id +
+                ", typeName='" + typeName + '\'' +
+                ", taxCoefficient=" + taxCoefficient +
+                '}';
     }
 }

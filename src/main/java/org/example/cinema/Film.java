@@ -1,8 +1,12 @@
 package org.example.cinema;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class Film implements Comparable<Film>{
+public class Film implements Comparable<Film> {
+    private int id;
+    private List<Rent> collection;
     private FilmType filmType;
     AbstractFilmType type;
     private String name;
@@ -13,6 +17,7 @@ public class Film implements Comparable<Film>{
     private Color color;
 
     public Film() {
+        this.collection = new ArrayList<>();
         this.filmType = new FilmType();
         this.name = "unknown";
         this.registrationNumber = "-1";
@@ -22,7 +27,7 @@ public class Film implements Comparable<Film>{
         this.color = Color.BLACK_WHITE;
     }
 
-    public Film(FilmType filmType, String name, String registrationNumber, double weight, int manufactureYear, String genre, Color color) {
+    public Film(int id, FilmType filmType, String name, String registrationNumber, double weight, int manufactureYear, String genre, Color color) {
         if (!TechnicalSpecialist.validateFilmType(filmType)) {
             throw new IllegalArgumentException("Wrong film type: " + filmType);
         }
@@ -41,7 +46,8 @@ public class Film implements Comparable<Film>{
         if (!TechnicalSpecialist.validateColor(color)){
             throw new IllegalArgumentException("Wrong color: " + color);
         }
-
+        this.id = id;
+        this.collection = new ArrayList<>();
         this.filmType = filmType;
         this.name = name;
         this.registrationNumber = registrationNumber;
@@ -49,6 +55,26 @@ public class Film implements Comparable<Film>{
         this.manufactureYear = manufactureYear;
         this.genre = genre;
         this.color = color;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Rent> getCollection() {
+        return collection;
+    }
+
+    public void setCollection(List<Rent> collection) {
+        this.collection = collection;
+    }
+
+    public void addRent(Rent rent) {
+        collection.add(rent);
     }
 
     public FilmType getFilmType() {
@@ -123,6 +149,18 @@ public class Film implements Comparable<Film>{
             throw new IllegalArgumentException("Wrong color: " + color);
         }
         this.color = color;
+    }
+
+    public double getTotalIncome() {
+        double result = 0;
+        for (Rent rent: collection) {
+            result += rent.getPrice();
+        }
+        return result;
+    }
+
+    public double getTotalProfit() {
+        return getTotalIncome() - getCalcTaxPerMonth();
     }
 
     public double getCalcTaxPerMonth() {

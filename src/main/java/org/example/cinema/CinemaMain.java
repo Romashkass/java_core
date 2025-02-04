@@ -4,7 +4,8 @@ import java.util.Random;
 
 public class CinemaMain {
     public static void main(String[] args) {
-        FilmType[] types = new FilmType[]{
+        //before module 11
+        /*FilmType[] types = new FilmType[]{
                 new FilmType("Film8", 1.2),
                 new FilmType("Film16", 1),
                 new FilmType("Film32", 1.5)
@@ -41,18 +42,18 @@ public class CinemaMain {
         };
         Helper.printFilms(films);
         System.out.println();
-        Helper.printFilms(Helper.sortFilms(films));
+        Helper.printFilms(Helper.sortFilms(films));*/
 
-//        Film[] films2 = new Film[]{
-//                new Film(types[0], "Бэтмен", "1232", 0.5, 2015, "Боевик", Color.COLOR),
-//                new Film(types[0], "Бэтмен 2", "3456", 0.5, 2014, "Боевик", Color.COLOR),
-//                new Film(types[0], "Супермен", "9635", 1, 2019, "Боевик", Color.COLOR),
-//                new Film(types[1], "Астрал", "1132", 1, 2006, "Ужасы", Color.BLACK_WHITE),
-//                new Film(types[1], "Миссия невыполнима", "0098", 1, 2019, "Боевик", Color.COLOR),
-//                new Film(types[2], "Аватар", "6843", 3, 2016, "Боевик", Color.COLOR),
-//                new Film(types[2], "Аватар 2", "3863", 3, 2020, "Боевик", Color.COLOR),
-//        };
-
+        FilmsCollection collection = new FilmsCollection("types.csv", "films.csv", "rents.csv");
+        collection.display();
+        collection.insert(-1, new Film());
+        collection.display();
+        collection.delete(1);
+        collection.delete(4);
+        collection.delete(455);
+        collection.display();
+        collection.sort(new FilmComparator());
+        collection.display();
 
     }
 
