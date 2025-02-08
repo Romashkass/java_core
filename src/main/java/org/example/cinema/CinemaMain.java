@@ -44,7 +44,7 @@ public class CinemaMain {
         System.out.println();
         Helper.printFilms(Helper.sortFilms(films));*/
 
-        FilmsCollection collection = new FilmsCollection("types.csv", "films.csv", "rents.csv");
+        /*FilmsCollection collection = new FilmsCollection("types.csv", "films.csv", "rents.csv");
         collection.display();
         collection.insert(-1, new Film());
         collection.display();
@@ -53,8 +53,30 @@ public class CinemaMain {
         collection.delete(455);
         collection.display();
         collection.sort(new FilmComparator());
-        collection.display();
+        collection.display();*/
 
+        /*CustomQueue<Integer> cust = new CustomQueue<>();
+        for (int i = 0; i < 1000; i ++) {
+            cust.enqueue(i);
+        }
+        System.out.println("here");
+        for (int i = 0; i < 220; i++) {
+            System.out.println(cust.dequeue());
+        }
+
+        System.out.println(cust.peek());
+        System.out.println(cust.peek());
+        System.out.println(cust.peek());
+        System.out.println(cust.peek());*/
+
+        CustomStack<Integer> cust = new CustomStack<Integer>();
+        for (int i = 0; i < 1000; i ++) {
+            cust.push(i);
+        }
+        System.out.println("here");
+        for (int i = 0; i < 1100; i ++) {
+            System.out.println(cust.pop());
+        }
     }
 
     static class Helper {
